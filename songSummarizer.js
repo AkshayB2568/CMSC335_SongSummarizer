@@ -10,7 +10,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "templates"));
 app.use(express.static(__dirname));
 
-require("dotenv").config();
+//require("dotenv").config();
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
 // run "node .\songSummarizer.js 4000" (or specify some other port number) on terminal to run web app
