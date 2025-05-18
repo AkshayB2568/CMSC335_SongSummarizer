@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser"); 
 const app = express(); 
-const portNumber = 7423;
+const portNumber = process.env.PORT || 4000;
 process.stdin.setEncoding("utf8");
 
 app.use(bodyParser.urlencoded({extended:false}));
@@ -14,36 +14,32 @@ app.use(express.static(__dirname));
 //require("dotenv").config();
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
-console.log(`Web server started and running at http://localhost:${portNumber}`); 
-app.listen(portNumber);
+let args = (process.argv);
 
-// let args = (process.argv);
+if (args.length != 2) {
+    console.log("Usage node ./songSummarizer.js");
+} else {
+    console.log(`Web server started and running at http://localhost:${portNumber}`); 
+    app.listen(portNumber);
+    console.log('Stop to shutdown the server: ');
 
-// if (args.length != 3) {
-//     console.log("Usage songSummarizer.js portNumber");
-// } else {
-//     let portNumber = args[2]
-//     console.log(`Web server started and running at http://localhost:${portNumber}`); 
-//     app.listen(portNumber);
-//     console.log('Stop to shutdown the server: ');
-
-//     process.stdin.on('readable', () => {
-//         let args = (process.argv);
+    process.stdin.on('readable', () => {
+        let args = (process.argv);
     
-//         let dataInput = process.stdin.read();
-//         if (dataInput !== null) {
-//             let command = dataInput.trim();
-//             if (command === "stop") {
-//                 process.stdout.write("Shutting down the server");
-//                 process.exit(0) 
-//             } else {
-//                 process.stdout.write(`Invalid command: ${command}`);
-//                 process.stdin.resume();
-//                 console.log('\nStop to shutdown the server: ');
-//             }
-//         }
-//     });
-// }
+        let dataInput = process.stdin.read();
+        if (dataInput !== null) {
+            let command = dataInput.trim();
+            if (command === "stop") {
+                process.stdout.write("Shutting down the server");
+                process.exit(0) 
+            } else {
+                process.stdout.write(`Invalid command: ${command}`);
+                process.stdin.resume();
+                console.log('\nStop to shutdown the server: ');
+            }
+        }
+    });
+}
 
 
 app.get("/", (request, response) => {
