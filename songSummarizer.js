@@ -13,7 +13,7 @@ app.use(express.static(__dirname));
 require("dotenv").config();
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
-
+// run "node .\songSummarizer.js 4000" (or specify some other port number) on terminal to run web app
 
 let args = (process.argv);
 
