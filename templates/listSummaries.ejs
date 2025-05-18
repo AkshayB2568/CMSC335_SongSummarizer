@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Search Summaries</title>
+    <link rel="stylesheet" href="summarizer.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<h1><u>Search Summaries</u></h1>
+    <p>Type the name of the folder you have saved your favorite song summaries to, and the song summaries saved in that folder will be displayed! </p>
+
+    <div>
+        <form action="/ListSummaries" method="POST">
+            <label><strong>Display song summaries from this folder: </strong><input type="text" name="displayFromFolder" required></label>
+
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+            <a href="/">Home</a>
+
+            <script>
+                window.onsubmit = () => { 
+                    return window.confirm("Are you sure you want to submit?") 
+                }
+            </script>
+
+        </form>
+
+	</div>
+
+</body>
+
+</html>

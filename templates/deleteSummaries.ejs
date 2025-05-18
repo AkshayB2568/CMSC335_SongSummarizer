@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Delete Summary</title>
+    <link rel="stylesheet" href="summarizer.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <script>
+        function checkBox(checkbox) {
+            const artistSongDisplayDiv = document.getElementById('artistAndSong');
+            const artist = document.getElementById('deleteArtist');
+
+            if (checkbox.checked) {
+                artistSongDisplayDiv.style.display = 'none';
+                artist.required = false
+            } else {
+                artistSongDisplayDiv.style.display = 'block';
+                artist.required = true
+            }
+            
+        }
+    </script>
+</head>
+
+<body>
+	<h1><u>Delete Summaries</u></h1>
+
+    <div>
+        <form action="/DeleteSummaries" method="POST">
+            <label><strong>Delete all song summaries from this folder: </strong><input type="text" name="specifyDeleteFolder" required><input type="checkbox" name="deleteAllFolder" value="yes" onchange="checkBox(this)"></label><br><br>
+            
+            <div id="artistAndSong" style="display: block;">
+                <label><strong>Delete song summaries by this artist from the specified folder: </strong><input type="text" id="deleteArtist" name="deleteArtist" required></label><br><br>
+                <label><strong>Delete this song by specified artist from the specified folder: </strong><input type="text" id="deleteSong" name="deleteSong"></label><br><br>
+            </div>
+            
+            
+            <div>
+                <%- deletionConfirmation %>
+            </div>
+            <br>
+
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+            <a href="/">Home</a>
+
+            <script>
+                window.onsubmit = () => { 
+                    return window.confirm("Are you sure you want to submit?") 
+                }
+            </script>
+
+        </form>
+
+	</div>
+
+</body>
+
+</html>

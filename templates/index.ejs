@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Song Summarizer Web App</title>
+    <link rel="stylesheet" href="summarizer.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <script>
+        function checkBox(checkbox) {
+            const folderDiv = document.getElementById('folder');
+            const folderNameInput = document.getElementById('folderName');
+
+            if (checkbox.checked) {
+                folderDiv.style.display = 'block';
+                folderNameInput.required = true
+            } else {
+                folderDiv.style.display = 'none';
+                folderNameInput.required = false
+            }
+            
+        }
+    </script>
+</head>
+
+<body>
+	<h1 id="songSummarizerHeader"><u>Song Summarizer</u></h1>
+    <p id="songSummarizerDescription">Welcome to the Song Summarizer! Below, enter an artist and their song, and you can get a quick summary of that song by that artist! 
+        If you want to save the description of the song for later, feel free to check the "Save" checkbox, enter the name of the folder (playlist)
+        you want to save it to, and you can view the contents of your folders/playlists by navigating the options below. This is a one-stop-shop to quickly get summaries of your favorite 
+        songs by your favorite artists, so that you can use this information for your reference or even send these summaries to friends in your attempt to get them to listen
+        to this song or artist.</p>
+
+    <form action="/Summarize" method="POST">
+        <fieldset>
+
+            <legend>
+                <i><strong>Song Summary Request Form</strong></i>
+            </legend>
+
+            <label><strong>Artist: </strong><input type="text" name="artistName" required></label> <br><br>
+
+            <label><strong>Song: </strong><input type="text" name="songName" required></label> <br><br>
+
+            <label><strong>Save</strong><input type="checkbox" name="saveEntry" value="yes" onchange="checkBox(this)"></label> <br><br>
+
+            <div id="folder" style="display: none;">
+                <label><strong>Save song summary under this folder name: </strong><input type="text" id="folderName" name="folderName"></label>
+            </div>
+
+        </fieldset>
+
+        <button type="reset" name="resetButtonSumm">Reset</button>
+        <button type="submit" name="submitButtonSumm">Submit</button>
+        <a href="/ListSummaries">View Saved Song Summaries</a>
+        <a href="/DeleteSummaries">Delete Saved Song Summary</a>
+
+        <script>
+            window.onsubmit = () => { 
+                return window.confirm("Are you sure you want to submit?") 
+            }
+        </script>
+
+    </form>
+</body>
+
+</html>

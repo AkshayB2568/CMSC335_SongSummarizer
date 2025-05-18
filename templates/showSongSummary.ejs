@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Song Summary</title>
+    <link rel="stylesheet" href="summarizer.css" type="text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<h1><u>Song Summary</u></h1>
+
+    <div>
+		<strong>Artist: </strong><%- artist %><br>
+		<strong>Song: </strong><%- song %><br>
+		<br>
+        <hr>
+        <%- displaySongSummary %>
+        <hr>
+		<br><br>
+		<a href="/">Home</a>
+	</div>
+
+</body>
+
+</html>
