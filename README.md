@@ -12,4 +12,4 @@ APIs: Genius API (https://docs.genius.com/)
 
 Contact Email: abadrina@terpmail.umd.edu
 
-Deployed App Link: Had difficulty deploying, so web app needs to be runned locally by downloading files
+Deployed App Link: https://cmsc335-songsummarizer-ezii.onrender.com/ 
